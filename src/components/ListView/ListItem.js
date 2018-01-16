@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import styles from "./styles";
 
 const ListItem = ({ title, subTitle, onPress }) => (
-  <TouchableOpacity onPress={() => onPress(title)}>
+  <TouchableOpacity onPress={() => onPress(title, subTitle)}>
     <View style={styles.listItemContainer}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subTitle}>{subTitle} cards</Text>

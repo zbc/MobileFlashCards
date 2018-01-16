@@ -44,8 +44,8 @@ const deckData = [
 ];
 
 class DecksScreen extends Component {
-  handlePress = title => {
-    this.props.navigation.navigate("Cards", { title });
+  handlePress = (title, subTitle) => {
+    this.props.navigation.navigate("Cards", { title, subTitle });
   };
   render() {
     return (

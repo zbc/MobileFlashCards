@@ -7,8 +7,8 @@ import styles from "./styles";
 import { ListItem } from "./index";
 
 class ListView extends Component {
-  onPress = title => {
-    this.props.onPress(title);
+  onPress = (title, subTitle) => {
+    this.props.onPress(title, subTitle);
   };
 
   renderItem = ({ item, index }) => (

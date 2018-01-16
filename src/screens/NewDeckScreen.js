@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
 
 import { Container } from "../components/Container";
+import { Form } from "../components/Form";
 
 const NewDeckScreen = () => (
   <Container>
-    <Text>This is New Deck Screen</Text>
+    <Form />
   </Container>
 );
 
