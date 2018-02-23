@@ -5,43 +5,39 @@ import { List, ListItem } from "react-native-elements";
 import { Container } from "../components/Container";
 import { ListView } from "../components/ListView";
 
-const deckData = [
-  {
-    deck: {
-      title: "React",
-      questions: [
-        {
-          question: "What is React?",
-          answer: "A library for managing user interfaces"
-        },
-        {
-          question: "Where do you make Ajax requests in React?",
-          answer: "The componentDidMount lifecycle event"
-        }
-      ]
-    }
+const deckData = {
+  React: {
+    title: "React",
+    questions: [
+      {
+        question: "What is React?",
+        answer: "A library for managing user interfaces"
+      },
+      {
+        question: "Where do you make Ajax requests in React?",
+        answer: "The componentDidMount lifecycle event"
+      }
+    ]
   },
-  {
-    deck: {
-      title: "Javascript",
-      questions: [
-        {
-          question: "What is React?",
-          answer: "A library for managing user interfaces"
-        },
-        {
-          question: "Where do you make Ajax requests in React?",
-          answer: "The componentDidMount lifecycle event"
-        },
-        {
-          question: "What is a closure?",
-          answer:
-            "The combination of a function and the lexical environment within which that function was declared."
-        }
-      ]
-    }
+  Javascript: {
+    title: "Javascript",
+    questions: [
+      {
+        question: "What is React?",
+        answer: "A library for managing user interfaces"
+      },
+      {
+        question: "Where do you make Ajax requests in React?",
+        answer: "The componentDidMount lifecycle event"
+      },
+      {
+        question: "What is a closure?",
+        answer:
+          "The combination of a function and the lexical environment within which that function was declared."
+      }
+    ]
   }
-];
+};
 
 class DecksScreen extends Component {
   handlePress = (title, subTitle) => {

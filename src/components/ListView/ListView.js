@@ -11,20 +11,27 @@ class ListView extends Component {
     this.props.onPress(title, subTitle);
   };
 
-  renderItem = ({ item, index }) => (
-    <ListItem
-      title={item.deck.title}
-      subTitle={item.deck.questions.length}
-      onPress={this.onPress}
-    />
-  );
+  renderItem = ({ item }) => {
+    // console.log(item);
+    return (
+      <ListItem
+        title={item.title}
+        subTitle={item.questions.length}
+        onPress={this.onPress}
+      />
+    );
+  };
 
   render() {
+    const deck = this.props.data;
     return (
       <List containerStyle={styles.container}>
         <FlatList
-          data={this.props.data}
-          keyExtractor={(item, index) => item.deck.title}
+          data={Object.keys(deck).reduce((result, id) => {
+            result.push(deck[id]);
+            return result;
+          }, [])}
+          keyExtractor={(item, index) => index}
           renderItem={this.renderItem}
         />
       </List>
@@ -33,7 +40,7 @@ class ListView extends Component {
 }
 
 ListView.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.object,
   onPress: PropTypes.func
 };
 
