@@ -1,55 +1,55 @@
 import React, { Component } from "react";
 import { View, Text, FlatList } from "react-native";
 import { List, ListItem } from "react-native-elements";
+import { connect } from "react-redux";
+import _ from "lodash";
 
 import { Container } from "../components/Container";
 import { ListView } from "../components/ListView";
 
-const deckData = {
-  React: {
-    title: "React",
-    questions: [
-      {
-        question: "What is React?",
-        answer: "A library for managing user interfaces"
-      },
-      {
-        question: "Where do you make Ajax requests in React?",
-        answer: "The componentDidMount lifecycle event"
-      }
-    ]
-  },
-  Javascript: {
-    title: "Javascript",
-    questions: [
-      {
-        question: "What is React?",
-        answer: "A library for managing user interfaces"
-      },
-      {
-        question: "Where do you make Ajax requests in React?",
-        answer: "The componentDidMount lifecycle event"
-      },
-      {
-        question: "What is a closure?",
-        answer:
-          "The combination of a function and the lexical environment within which that function was declared."
-      }
-    ]
-  }
-};
+import { deckData } from "../data";
+import { getAllDecks } from "../actions";
+
+import { removeAllDecks } from "../utils/api";
 
 class DecksScreen extends Component {
+  componentWillMount() {
+    this.props.getAllDecks();
+  }
+
+  componentDidMount() {
+    // console.log(this.props.decks);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEqual(this.props.decks, nextProps.decks)) {
+      this.props.getAllDecks();
+    }
+  }
+
   handlePress = (title, subTitle) => {
     this.props.navigation.navigate("Cards", { title, subTitle });
   };
   render() {
+    const { decks } = this.props;
     return (
       <Container>
-        <ListView data={deckData} onPress={this.handlePress} />
+        <ListView data={decks} onPress={this.handlePress} />
       </Container>
     );
   }
 }
 
-export default DecksScreen;
+const mapStateToProps = ({ decks }) => {
+  return {
+    decks
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllDecks: () => dispatch(getAllDecks)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DecksScreen);

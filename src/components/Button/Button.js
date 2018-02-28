@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 
 import styles from "./styles";
 
-const Button = ({ children, onPress }) => (
+const Button = ({ children, onPress, backgroundColor = "#0CD38A" }) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
-    <View style={styles.button}>
+    <View style={[styles.button, { backgroundColor }]}>
       <Text style={styles.text}>{children}</Text>
     </View>
   </TouchableOpacity>

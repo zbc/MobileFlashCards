@@ -17,7 +17,9 @@ class CardsScreen extends Component {
         >
           Add Card
         </Button>
-        <Button onPress={() => this.props.navigation.navigate("Quiz")}>
+        <Button
+          onPress={() => this.props.navigation.navigate("Quiz", { title })}
+        >
           Start Quiz
         </Button>
       </Container>

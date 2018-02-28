@@ -16,5 +16,21 @@ export default EStyleSheet.create({
     color: "$white",
     letterSpacing: 0,
     fontSize: 20
+  },
+  simpleContainer: {
+    marginHorizontal: 50,
+    marginBottom: 20
+  },
+  simpleButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 2,
+    paddingVertical: 12
+  },
+  simpleText: {
+    color: "$red",
+    letterSpacing: 0,
+    fontSize: 20,
+    fontWeight: "bold"
   }
 });
