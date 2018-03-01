@@ -6,6 +6,18 @@ import { TextWithSubtitle } from "../components/Text";
 import { Button } from "../components/Button";
 
 class CardsScreen extends Component {
+  state = {
+    disabled: false
+  };
+  componentDidMount() {
+    const { subTitle } = this.props.navigation.state.params;
+    console.log(subTitle);
+    if (subTitle == 0) {
+      this.setState({ disabled: true });
+    } else {
+      this.setState({ disabled: false });
+    }
+  }
   render() {
     const { title, subTitle } = this.props.navigation.state.params;
 
@@ -18,6 +30,7 @@ class CardsScreen extends Component {
           Add Card
         </Button>
         <Button
+          disabled={this.state.disabled}
           onPress={() => this.props.navigation.navigate("Quiz", { title })}
         >
           Start Quiz

@@ -1,40 +1,40 @@
 import { ADD_DECK, ADD_CARD, GET_DECKS } from "../actions/types";
 
-const initialState = {};
-// const initialState = {
-//   React: {
-//     title: "React",
-//     questions: [
-//       {
-//         question: "What is React?",
-//         answer: "A library for managing user interfaces"
-//       },
-//       {
-//         question: "Where do you make Ajax requests in React?",
-//         answer: "The componentDidMount lifecycle event"
-//       }
-//     ]
-//   },
-//   JavaScript: {
-//     title: "JavaScript",
-//     questions: [
-//       {
-//         question: "What is a closure?",
-//         answer:
-//           "The combination of a function and the lexical environment within which that function was declared."
-//       }
-//     ]
-//   },
-//   Redux: {
-//     title: "Redux",
-//     questions: [
-//       {
-//         question: "What is Redux?",
-//         answer: "Redux is a predictable state container for JavaScript apps"
-//       }
-//     ]
-//   }
-// };
+// const initialState = {};
+const initialState = {
+  React: {
+    title: "React",
+    questions: [
+      {
+        question: "What is React?",
+        answer: "A library for managing user interfaces"
+      },
+      {
+        question: "Where do you make Ajax requests in React?",
+        answer: "The componentDidMount lifecycle event"
+      }
+    ]
+  },
+  JavaScript: {
+    title: "JavaScript",
+    questions: [
+      {
+        question: "What is a closure?",
+        answer:
+          "The combination of a function and the lexical environment within which that function was declared."
+      }
+    ]
+  },
+  Redux: {
+    title: "Redux",
+    questions: [
+      {
+        question: "What is Redux?",
+        answer: "Redux is a predictable state container for JavaScript apps"
+      }
+    ]
+  }
+};
 
 const DeckReducer = (state = initialState, action) => {
   switch (action.type) {

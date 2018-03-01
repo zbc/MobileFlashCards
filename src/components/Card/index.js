@@ -1,4 +1,5 @@
 import styles from "./styles";
 import Card from "./Card";
+import ScoreCard from "./ScoreCard";
 
-export { styles, Card };
+export { styles, Card, ScoreCard };

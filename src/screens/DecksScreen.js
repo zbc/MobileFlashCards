@@ -14,6 +14,7 @@ import { removeAllDecks } from "../utils/api";
 
 class DecksScreen extends Component {
   componentWillMount() {
+    // removeAllDecks();
     this.props.getAllDecks();
   }
 

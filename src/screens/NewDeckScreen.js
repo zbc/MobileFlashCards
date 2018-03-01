@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Keyboard } from "react-native";
 import { connect } from "react-redux";
 
 import { Container } from "../components/Container";
@@ -12,8 +13,9 @@ class NewDeckScreen extends Component {
   };
   handleSubmit = () => {
     this.props.addDeck(this.state.title);
-    this.props.navigation.navigate("Decks");
     this.setState({ title: "" });
+    Keyboard.dismiss();
+    this.props.navigation.navigate("Decks");
   };
 
   render() {

@@ -11,11 +11,16 @@ export default EStyleSheet.create({
     borderRadius: 3,
     marginHorizontal: 20,
     padding: 20,
-    height: height / 2,
-    backgroundColor: "$lightlightGray"
+    height: height / 2.5,
+    backgroundColor: "$lightlightGray",
+    marginVertical: 20
   },
   text: {
     fontSize: 25,
     letterSpacing: 0
+  },
+  scoreContainer: {
+    flex: 1,
+    paddingVertical: 20
   }
 });

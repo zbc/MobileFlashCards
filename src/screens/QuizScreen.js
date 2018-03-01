@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { Container } from "../components/Container";
 import { SimpleButton, Button } from "../components/Button";
 import { TextWithIndex } from "../components/Text";
-import { Card } from "../components/Card";
+import { Card, ScoreCard } from "../components/Card";
+import { setLocalNotification, clearLocalNotification } from "../utils/helper";
 
 class QuizScreen extends Component {
   state = {
@@ -53,6 +54,19 @@ class QuizScreen extends Component {
       score: 0
     });
     this.props.navigation.navigate("Decks");
+    clearLocalNotification().then(setLocalNotification);
+  };
+
+  handleStartOver = () => {
+    this.setState({
+      total: 1,
+      index: 1,
+      flip: false,
+      done: false,
+      score: 0
+    });
+    this.props.navigation.goBack(null);
+    clearLocalNotification().then(setLocalNotification);
   };
 
   render() {
@@ -62,11 +76,16 @@ class QuizScreen extends Component {
     return (
       <Container>
         {done ? (
-          <View>
-            <Text>Score: {score / total * 100}%</Text>
-            <Button onPress={this.handleBack}>Back</Button>
-          </View>
+          <ScoreCard
+            score={score / total * 100}
+            onPressStartOver={this.handleStartOver}
+            onPressBack={this.handleBack}
+          />
         ) : (
+          // <View>
+          //   <Text>Score: {score / total * 100}%</Text>
+          //   <Button onPress={this.handleBack}>Back</Button>
+          // </View>
           <View style={{ flex: 1 }}>
             <TextWithIndex index={index} total={total} />
             <Card questions={questions} index={index} flip={flip} />

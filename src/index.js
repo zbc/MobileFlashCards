@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Text, View } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import { Provider } from "react-redux";
@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import store from "./config/store";
 import Navigator from "./config/routes";
 import { Container } from "./components/Container";
+
+import { setLocalNotification } from "./utils/helper";
 
 EStyleSheet.build({
   $white: "#ffffff",
@@ -19,10 +21,20 @@ EStyleSheet.build({
   $red: "#cc0000"
 });
 
-export default () => (
-  <Provider store={store}>
-    <Container>
-      <Navigator />
-    </Container>
-  </Provider>
-);
+class App extends Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <Container>
+          <Navigator />
+        </Container>
+      </Provider>
+    );
+  }
+}
+
+export default App;

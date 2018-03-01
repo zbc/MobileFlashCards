@@ -1,16 +1,18 @@
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, KeyboardAvoidingView } from "react-native";
 
 import styles from "./styles";
 
 const Input = props => (
-  <TextInput
-    style={styles.container}
-    autoCapitalize="none"
-    autoCorrect={false}
-    placeholderTextColor="#6d6f7c"
-    {...props}
-  />
+  <KeyboardAvoidingView behavior="padding">
+    <TextInput
+      style={styles.container}
+      autoCapitalize="none"
+      autoCorrect={false}
+      placeholderTextColor="#6d6f7c"
+      {...props}
+    />
+  </KeyboardAvoidingView>
 );
 
 export default Input;
