@@ -1,12 +1,10 @@
 # Mobile FlashCards
 
----
 
 The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
 
 # Installation
 
----
 
 ### Install all necessary dependencies
 
@@ -18,12 +16,10 @@ The app will allow users to create different categories of flashcards called "de
 
 # Which platform has been tested?
 
----
 
 This app has been tested in IOS simulator and device.
 
 # License
 
----
 
 MIT
