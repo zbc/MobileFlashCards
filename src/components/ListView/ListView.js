@@ -29,7 +29,6 @@ class ListView extends Component {
   };
 
   renderItem = ({ item }) => {
-    // console.log(item);
     return (
       <ListItem
         title={item.title}

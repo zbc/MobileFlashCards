@@ -1,25 +1,35 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
+import { connect } from "react-redux";
 
 import { Container } from "../components/Container";
 import { TextWithSubtitle } from "../components/Text";
 import { Button } from "../components/Button";
 
+import { getAllDecks } from "../actions";
+
 class CardsScreen extends Component {
   state = {
     disabled: false
   };
+
+  componentWillMount() {
+    this.props.getAllDecks();
+  }
+
   componentDidMount() {
-    const { subTitle } = this.props.navigation.state.params;
-    console.log(subTitle);
+    const { title } = this.props.navigation.state.params;
+    const subTitle = this.props.decks[title].questions.length;
     if (subTitle == 0) {
       this.setState({ disabled: true });
     } else {
       this.setState({ disabled: false });
     }
   }
+
   render() {
-    const { title, subTitle } = this.props.navigation.state.params;
+    const { title } = this.props.navigation.state.params;
+    const subTitle = this.props.decks[title].questions.length;
 
     return (
       <Container>
@@ -40,4 +50,16 @@ class CardsScreen extends Component {
   }
 }
 
-export default CardsScreen;
+const mapStateToProps = ({ decks }) => {
+  return {
+    decks
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllDecks: () => dispatch(getAllDecks)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsScreen);

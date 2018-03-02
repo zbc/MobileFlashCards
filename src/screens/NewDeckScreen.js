@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Keyboard } from "react-native";
+import { Keyboard, KeyboardAvoidingView } from "react-native";
 import { connect } from "react-redux";
 
 import { Container } from "../components/Container";
@@ -12,29 +12,27 @@ class NewDeckScreen extends Component {
     title: ""
   };
   handleSubmit = () => {
-    this.props.addDeck(this.state.title);
+    const { title } = this.state;
+    this.props.addDeck(title);
     this.setState({ title: "" });
     Keyboard.dismiss();
-    this.props.navigation.navigate("Decks");
+    // this.props.navigation.navigate("Decks");
+    this.props.navigation.navigate("Cards", { title });
   };
 
   render() {
     return (
       <Container>
-        <Form
-          value={this.state.title}
-          onSubmit={this.handleSubmit}
-          onChangeText={title => this.setState({ title })}
-        />
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <Form
+            value={this.state.title}
+            onSubmit={this.handleSubmit}
+            onChangeText={title => this.setState({ title })}
+          />
+        </KeyboardAvoidingView>
       </Container>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addDeck: title => dispatch(addDeck(title))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(NewDeckScreen);
+export default connect(null, { addDeck })(NewDeckScreen);

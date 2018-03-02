@@ -18,10 +18,6 @@ class DecksScreen extends Component {
     this.props.getAllDecks();
   }
 
-  componentDidMount() {
-    // console.log(this.props.decks);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (!_.isEqual(this.props.decks, nextProps.decks)) {
       this.props.getAllDecks();

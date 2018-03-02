@@ -53,19 +53,18 @@ class QuizScreen extends Component {
       done: false,
       score: 0
     });
-    this.props.navigation.navigate("Decks");
+    this.props.navigation.goBack(null);
     clearLocalNotification().then(setLocalNotification);
   };
 
   handleStartOver = () => {
     this.setState({
-      total: 1,
+      total: this.props.deck.questions.length,
       index: 1,
       flip: false,
       done: false,
       score: 0
     });
-    this.props.navigation.goBack(null);
     clearLocalNotification().then(setLocalNotification);
   };
 

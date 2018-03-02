@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { KeyboardAvoidingView } from "react-native";
 import { connect } from "react-redux";
 
 import { addCard } from "../actions";
@@ -20,30 +21,24 @@ class AddCardScreen extends Component {
       question: "",
       answer: ""
     });
-    this.props.navigation.navigate("Decks");
+    this.props.navigation.goBack(null);
   };
 
   render() {
-    // console.log(this.props.navigation.state.params.title);
     return (
       <Container>
-        <CardForm
-          questionValue={this.state.question}
-          answerValue={this.state.answer}
-          onQuestionChangeText={question => this.setState({ question })}
-          onAnswerChangeText={answer => this.setState({ answer })}
-          onSubmit={this.handleSubmit}
-        />
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <CardForm
+            questionValue={this.state.question}
+            answerValue={this.state.answer}
+            onQuestionChangeText={question => this.setState({ question })}
+            onAnswerChangeText={answer => this.setState({ answer })}
+            onSubmit={this.handleSubmit}
+          />
+        </KeyboardAvoidingView>
       </Container>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addCard: (title, question, answer) =>
-      dispatch(addCard(title, question, answer))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(AddCardScreen);
+export default connect(null, { addCard })(AddCardScreen);
